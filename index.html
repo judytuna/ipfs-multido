@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>My Multiple-Stage Todo List</title>
+    <script src="hyper://blog.mauve.moe/slides/agregore-blog-workshop/helpers.js" type="module"></script>
+    <script>
+      let stagePopup = function(e) {
+        let el = e.currentTarget;
+        console.log(el.className);
+      };
+      let moveToStage = async function(el, stageName) {
+        el.stage = stageName;
+        el.className = "";
+        el.classList.add(stage);
+        await save();
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Hello World, this is my multi-stage todo list!</h1>
+    <h2>Want to play</h2>
+    <ul>
+      <li onclick="stagePopup">Super Mario Odyssey</li>
+      <li>River City Girls 1 & 2</li>
+      <li>Ooblets</li>
+    </ul>
+    <h2>Playing</h2>
+    <h2>Done</h2>
+  </body>
+</html>
