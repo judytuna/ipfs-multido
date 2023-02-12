@@ -15,13 +15,21 @@
           stageSelect.style.left = e.clientX;
           stageSelect.style.top = e.clientY;
           stageSelect.removeAttribute("hidden");
+
+          let saveButton = document.getElementById("saveButton");
+          saveButton.setAttribute("disabled", "true");
         }
         document.moveToStage = async function(e, stageName) {
           let stageSelect = document.getElementById("stageSelect");
           stageSelect.hidden = true;
+
           let el = document.currentGame;
           el.className = "";
           el.classList.add(stageName);
+
+          let saveButton = document.getElementById("saveButton");
+          saveButton.removeAttribute("disabled");
+
           await save();
         };
       }
