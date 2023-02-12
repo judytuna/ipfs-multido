@@ -1,5 +1,11 @@
 # hyper-multido
 
+Todo app with multiple "stages" of done-ness. I'm starting with video games.
+
+View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregore-browser) at: `hyper://0cff0e224c9f1a2def6f033d3e620c48c3db233171cf8eb6837cf26a7deb1e2d/`
+
+<img width="518" alt="Screen Shot 2023-02-11 at 11 57 08 PM" src="https://user-images.githubusercontent.com/315395/218299625-1b38c633-a12e-431a-95ba-79601d46d07c.png">
+
 ### todo
 
  - [x] just to get started: very stupid todo list that is just a bunch of li elements in an unordered list (20 min)
