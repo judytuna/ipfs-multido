@@ -2,7 +2,7 @@
 
 ### todo
 
- - [x] just to get started: very stupid todo list that is just a bunch of li elements in an unordered list
+ - [x] just to get started: very stupid todo list that is just a bunch of li elements in an unordered list (20 min)
  - [x] how to get html/js into a hyper or ipfs site (1 hr)
  - [x] plan out how to make the parts of the app (1 hr)
  - [x] name the app
