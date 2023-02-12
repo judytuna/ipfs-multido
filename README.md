@@ -25,6 +25,12 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [x] autosave per action (1 hr)
  - [x] add a legend so we know what the colors mean
  - [ ] edit a game's name
+ - [ ] how does it look on android? (there is no iOS agregore)
+ - [ ] fix colors and styling
+ - [ ] pick a font
+ - [ ] tutorialize!
+ - [ ] general case - untie it from games?
+ - [ ] other numbers of stages / arbitrary addition of stages?
  
  ### in my wildest dreams
  
@@ -32,4 +38,8 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [ ] leave comments on friends' activity
  - [ ] review games i've played
  - [ ] track played time somehow (manually? input through steam api if there is one?)
+ 
+ ### out of scope
+ 
+ - separating content and presentation. right now, data is kept as classes on list elements. lol 
 
