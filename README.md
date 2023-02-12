@@ -31,6 +31,8 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [ ] tutorialize!
  - [ ] general case - untie it from games?
  - [ ] other numbers of stages / arbitrary addition of stages?
+ - [ ] delete a list item
+ - [ ] pick bewteen color schemes, like "mario," "waluigi," and the default, "peach & rosalina" lol
  
  ### in my wildest dreams
  
@@ -39,7 +41,15 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [ ] review games i've played
  - [ ] track played time somehow (manually? input through steam api if there is one?)
  
+ ### meta app ideas
+ 
+ - list-maker: a GUI for setting up your own multido!
+  - name of thing (books, video games, birds)
+  - num stages
+  - stage names
+ 
  ### out of scope
  
  - separating content and presentation. right now, data is kept as classes on list elements. lol 
+ - an item can't be in more than one "stage" at a time. this is different from goodreads. maybe i can get around this by implementing tags, which are separate from stages.
 
