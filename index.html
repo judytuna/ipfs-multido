@@ -14,7 +14,7 @@
           let stageSelect = document.getElementById("stageSelect");
           stageSelect.style.left = e.clientX;
           stageSelect.style.top = e.clientY;
-          stageSelect.hidden = false;
+          stageSelect.removeAttribute("hidden");
         }
         document.moveToStage = async function(e, stageName) {
           let stageSelect = document.getElementById("stageSelect");
@@ -30,28 +30,32 @@
     <style>
       .to-play {
         background-color: #ffffff;
+        color: darkslategray;
       }
       .playing {
-        background-color: gold;
+        background-color: rgb(122, 233, 243);
       }
-      .done {
-        background-color: gray;
+      .played {
+        background-color: rgb(255, 166, 166);
       }
     </style>
   </head>
+
   <body>
     <h1>Hello World, this is my multi-stage todo list!</h1>
+
     <h2>All games</h2>
-  <ul>
-    <li onclick="document.stagePopup(event)" class="to-play">Super Mario Odyssey</li>
-    <li onclick="document.stagePopup(event)">River City Girls 1 &amp; 2</li>
-    <li onclick="document.stagePopup(event)">Ooblets</li>
-  </ul>
+    <ul>
+      <li onclick="document.stagePopup(event)" class="played">Super Mario Odyssey</li>
+      <li onclick="document.stagePopup(event)" class="to-play">River City Girls 1 &amp; 2</li>
+      <li onclick="document.stagePopup(event)" class="playing">Ooblets</li>
+    </ul>
 
-  <div id="stageSelect" hidden="true" style="background-color: orchid; z-index: 1000; color: #ffffff; width: 100px; position: absolute;">
-    <p onclick="document.moveToStage(event, 'to-play')">Want to play</p>
-    <p onclick="document.moveToStage(event, 'playing')">Playing</p>
-    <p onclick="document.moveToStage(event, 'done')">Done</p>
-  </div>
+    <div id="stageSelect" hidden="true" style="background-color: orchid; z-index: 1000; color: #ffffff; width: 100px; position: absolute; padding-left: 16px;">
+      <p onclick="document.moveToStage(event, 'to-play')">Want to play</p>
+      <p onclick="document.moveToStage(event, 'playing')">Playing</p>
+      <p onclick="document.moveToStage(event, 'played')">Played</p>
+    </div>
 
-  </body></html>
+  </body>
+</html>
