@@ -20,8 +20,16 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [ ] log every event to see a feed of changes
  - [ ] flip between list with indicator and multiple lists. vertical? horizontal like kanban board?
  - [ ] sorting a unified list (by date? by other things?)
- - [ ] tags on things?
+ - [ ] tags on things? for example, "ongoing" (animal crossing) vs "progressing" (celeste). or "100%" vs "main objective completed"
  - [ ] popup should go away if you click outside it
  - [x] autosave per action (1 hr)
  - [x] add a legend so we know what the colors mean
+ - [ ] edit a game's name
+ 
+ ### in my wildest dreams
+ 
+ - [ ] follow friends' activity feeds
+ - [ ] leave comments on friends' activity
+ - [ ] review games i've played
+ - [ ] track played time somehow (manually? input through steam api if there is one?)
 
