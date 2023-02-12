@@ -43,10 +43,16 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  
  ### meta app ideas
  
- - list-maker: a GUI for setting up your own multido!
-  - name of thing (books, video games, birds)
-  - num stages
-  - stage names
+ - list-maker: a GUI for setting up your own multido! requires no coding and no dev tool use
+   - name of thing (books, video games, birds)
+   - num stages
+   - stage names
+ - a list cloner, like github's "fork this" button
+   - on the corner
+   - copy the whole thing, even the data (i guess)
+   - field with new url name 
+   - it performs the `fetch` operation on the url hyper://newurlname and uploads it to hyper
+   - edit code in the dev tools like usual
  
  ### out of scope
  
