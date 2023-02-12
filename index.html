@@ -19,6 +19,7 @@
           let saveButton = document.getElementById("saveButton");
           saveButton.setAttribute("disabled", "true");
         }
+
         document.moveToStage = async function(e, stageName) {
           let stageSelect = document.getElementById("stageSelect");
           stageSelect.hidden = true;
@@ -30,6 +31,10 @@
           let saveButton = document.getElementById("saveButton");
           saveButton.removeAttribute("disabled");
 
+          await save();
+        };
+
+        document.doSave = async function() {
           await save();
         };
       }
@@ -59,7 +64,7 @@
       <li onclick="document.stagePopup(event)" class="playing">Ooblets</li>
     </ul>
 
-    <button onclick="await save();">Save</button>
+    <button id="saveButton" onclick="document.doSave();">Save</button>
 
     <div id="stageSelect" hidden="true" style="background-color: orchid; z-index: 1000; color: #ffffff; width: 100px; position: absolute; padding-left: 16px;">
       <p onclick="document.moveToStage(event, 'to-play')">Want to play</p>
