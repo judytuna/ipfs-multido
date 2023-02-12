@@ -31,11 +31,17 @@
           let saveButton = document.getElementById("saveButton");
           saveButton.removeAttribute("disabled");
 
-          await save();
+          document.doSave();
         };
 
         document.doSave = async function() {
+          console.log("Saving...");
           await save();
+        };
+
+        document.addNewGame = async function() {
+
+          document.doSave();
         };
       }
       init();
@@ -62,6 +68,9 @@
       <li onclick="document.stagePopup(event)" class="played">Super Mario Odyssey</li>
       <li onclick="document.stagePopup(event)" class="to-play">River City Girls 1 &amp; 2</li>
       <li onclick="document.stagePopup(event)" class="playing">Ooblets</li>
+      <li>
+        <input id="newGame">
+      </li>
     </ul>
 
     <button id="saveButton" onclick="document.doSave();">Save</button>
