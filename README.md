@@ -23,4 +23,5 @@ View it live using the [Agregore browser](https://github.com/AgregoreWeb/agregor
  - [ ] tags on things?
  - [ ] popup should go away if you click outside it
  - [x] autosave per action (1 hr)
+ - [ ] add a legend so we know what the colors mean
  
