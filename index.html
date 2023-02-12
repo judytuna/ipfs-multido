@@ -39,7 +39,23 @@
           await save();
         };
 
-        document.addNewGame = async function() {
+        document.addNewGame = async function(e) {
+          e.preventDefault();
+
+          let inputLi = document.getElementById("inputLi");
+          let newGameField = document.getElementById("newGameField");
+          let gameText = newGameField.value;
+          newGameField.value = "";
+
+          let newGameLi = document.createElement("li");
+          newGameLi.className = "to-play";
+          newGameLi.setAttribute("onclick", "document.stagePopup(event)");
+          newGameLi.append(gameText);
+
+          let parentList = inputLi.parentElement;
+
+          parentList.append(newGameLi);
+          parentList.append(inputLi);
 
           document.doSave();
         };
@@ -68,8 +84,10 @@
       <li onclick="document.stagePopup(event)" class="played">Super Mario Odyssey</li>
       <li onclick="document.stagePopup(event)" class="to-play">River City Girls 1 &amp; 2</li>
       <li onclick="document.stagePopup(event)" class="playing">Ooblets</li>
-      <li>
-        <input id="newGame">
+      <li id="inputLi">
+        <form onsubmit="document.addNewGame(event)">
+          <input id="newGameField" />
+        </form>
       </li>
     </ul>
 
