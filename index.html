@@ -1,67 +1,7 @@
 <html>
   <head>
     <title>My Multiple-Stage Todo List</title>
-    <script src="hyper://blog.mauve.moe/slides/agregore-blog-workshop/helpers.js" type="module"></script>
-    <script>
-      function init() {
-        document.currentGame = "";
 
-        document.stagePopup = function(e) {
-          let el = e.currentTarget;
-          console.log(el.className);
-          document.currentGame = el;
-
-          let stageSelect = document.getElementById("stageSelect");
-          stageSelect.style.left = e.clientX;
-          stageSelect.style.top = e.clientY;
-          stageSelect.removeAttribute("hidden");
-
-          let saveButton = document.getElementById("saveButton");
-          saveButton.setAttribute("disabled", "true");
-        }
-
-        document.moveToStage = async function(e, stageName) {
-          let stageSelect = document.getElementById("stageSelect");
-          stageSelect.hidden = true;
-
-          let el = document.currentGame;
-          el.className = "";
-          el.classList.add(stageName);
-
-          let saveButton = document.getElementById("saveButton");
-          saveButton.removeAttribute("disabled");
-
-          document.doSave();
-        };
-
-        document.doSave = async function() {
-          console.log("Saving...");
-          await save();
-        };
-
-        document.addNewGame = async function(e) {
-          e.preventDefault();
-
-          let inputLi = document.getElementById("inputLi");
-          let newGameField = document.getElementById("newGameField");
-          let gameText = newGameField.value;
-          newGameField.value = "";
-
-          let newGameLi = document.createElement("li");
-          newGameLi.className = "to-play";
-          newGameLi.setAttribute("onclick", "document.stagePopup(event)");
-          newGameLi.append(gameText);
-
-          let parentList = inputLi.parentElement;
-
-          parentList.append(newGameLi);
-          parentList.append(inputLi);
-
-          document.doSave();
-        };
-      }
-      init();
-    </script>
     <style>
       .to-play {
         background-color: #ffffff;
@@ -80,10 +20,7 @@
     <h1>Hello World, this is my multi-stage todo list!</h1>
 
     <h2>All games</h2>
-    <ul>
-      <li onclick="document.stagePopup(event)" class="played">Super Mario Odyssey</li>
-      <li onclick="document.stagePopup(event)" class="to-play">River City Girls 1 &amp; 2</li>
-      <li onclick="document.stagePopup(event)" class="playing">Ooblets</li>
+    <ul id="gameList">
       <li id="inputLi">
         <form onsubmit="document.addNewGame(event)">
           <input id="newGameField" />
@@ -113,4 +50,96 @@
     </div>
 
   </body>
+
+  <script>
+    function init() {
+      const peek = JSON.parse(localStorage.getItem("multido"));
+      if(peek) {
+        document.gameData = peek;
+      } else {
+        document.gameData = [];
+        localStorage.setItem("multido", JSON.stringify(document.gameData));
+      }
+
+      document.listEl = document.getElementById("gameList");
+
+      document.gameData.forEach(game => {
+        let newGameLi = document.createElement("li");
+        newGameLi.className = game.stageName;
+        newGameLi.setAttribute("onclick", "document.stagePopup(event)");
+        newGameLi.append(game.name);
+
+        document.listEl.append(newGameLi);
+      });
+
+      document.inputLi = document.getElementById("inputLi");
+      document.listEl.append(document.inputLi);
+
+      document.currentGameLi = "";
+
+      document.stagePopup = function(e) {
+        let el = e.currentTarget;
+        console.log(el.className);
+        document.currentGameLi = el;
+
+        let stageSelect = document.getElementById("stageSelect");
+        stageSelect.style.left = e.clientX;
+        stageSelect.style.top = e.clientY;
+        stageSelect.removeAttribute("hidden");
+
+        let saveButton = document.getElementById("saveButton");
+        saveButton.setAttribute("disabled", "true");
+      }
+
+      document.moveToStage = function(e, desiredStageName) {
+        let stageSelect = document.getElementById("stageSelect");
+        stageSelect.hidden = true;
+
+        let el = document.currentGameLi;
+        el.className = "";
+        el.classList.add(desiredStageName);
+        let gameName = el.textContent;
+
+        document.gameData.find(i => i["name"] == gameName).stageName = desiredStageName;
+
+        let saveButton = document.getElementById("saveButton");
+        saveButton.removeAttribute("disabled");
+
+        document.doSave();
+      };
+
+      document.doSave = function() {
+        console.log("Saving...");
+        localStorage.setItem('multido', JSON.stringify(document.gameData));
+        console.log(localStorage.getItem("multido"));
+      };
+
+      document.addNewGame = function(e) {
+        e.preventDefault();
+
+        let inputLi = document.getElementById("inputLi");
+        let newGameField = document.getElementById("newGameField");
+        let gameText = newGameField.value;
+        newGameField.value = "";
+
+        let newGameLi = document.createElement("li");
+        newGameLi.className = "to-play";
+        newGameLi.setAttribute("onclick", "document.stagePopup(event)");
+        newGameLi.append(gameText);
+
+        document.listEl.append(newGameLi);
+        document.listEl.append(inputLi);
+
+        document.gameData.push({
+          "name": gameText,
+          "stageName": "to-play"
+        });
+
+        document.doSave();
+      };
+    }
+
+    init();
+  </script>
+
 </html>
